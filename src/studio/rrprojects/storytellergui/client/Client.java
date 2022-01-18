@@ -5,15 +5,13 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
-import static java.lang.Thread.sleep;
-
 public class Client {
     // initialize socket and input output streams
     private Socket socket = null;
     private DataInputStream input = null;
     private DataOutputStream out = null;
-    private String address;
-    private int port;
+    private final String address;
+    private final int port;
 
     // constructor to put ip address and port
     public Client(String address, int port) {
@@ -39,18 +37,18 @@ public class Client {
             System.out.println("ERROR: " + u);
         }
     }
-    
+
     public void SendMessage() {
         // string to read message from input
         String line = "Hello World!";
-        
+
         try {
             out.writeUTF(line);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
+
     public void CloseConnection() {
         System.out.println("CLOSING CONNECTION");
         // close the connection
@@ -64,5 +62,5 @@ public class Client {
 
         System.out.println("CONNECTION CLOSED");
     }
-    
+
 }
