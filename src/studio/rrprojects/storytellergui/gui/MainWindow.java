@@ -9,6 +9,7 @@ public class MainWindow extends JFrame {
     private JButton buttonTest;
     private JPanel panelMain;
     private JButton buttonConnect;
+    private JTextField textFieldInput;
 
     public MainWindow(Controller controller) {
         super("Story Teller v0");
@@ -21,7 +22,11 @@ public class MainWindow extends JFrame {
 
 
         buttonTest.addActionListener(actionEvent -> {
-            controller.sendAndClose("Hello World!");
+            String input = textFieldInput.getText();
+            if (input.isBlank()) {
+                return;
+            }
+            controller.sendAndClose(input);
         });
 
         buttonConnect.addActionListener(actionEvent -> {
