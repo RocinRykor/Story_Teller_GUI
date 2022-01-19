@@ -15,16 +15,27 @@ public class Controller {
         Controller Controller = new Controller();
     }
 
-    public void testPing() {
+    public void sendAndClose(String s) {
         //Connect to Client
         //Start by loading the client and connecting to the server
         client = new Client("127.0.0.1", 5000);
         client.OpenConnection();
 
         //Send Message
-        client.SendMessage();
+        client.SendMessage(s);
 
         //Close Connection
         client.CloseConnection();
+    }
+
+    public void ping() {
+        //Start by loading the client and connecting to the server
+        client = new Client("127.0.0.1", 5000);
+        client.OpenConnection();
+
+        //Send Message
+        client.SendMessage("ping");
+
+        client.await();
     }
 }

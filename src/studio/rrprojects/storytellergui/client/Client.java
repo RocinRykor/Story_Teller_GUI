@@ -1,5 +1,6 @@
 package studio.rrprojects.storytellergui.client;
 
+import java.io.BufferedInputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -38,9 +39,9 @@ public class Client {
         }
     }
 
-    public void SendMessage() {
+    public void SendMessage(String s) {
         // string to read message from input
-        String line = "Hello World!";
+        String line = s;
 
         try {
             out.writeUTF(line);
@@ -63,4 +64,18 @@ public class Client {
         System.out.println("CONNECTION CLOSED");
     }
 
+    public void await() {
+        DataInputStream in = null;
+        try {
+            in = new DataInputStream(
+                    new BufferedInputStream(socket.getInputStream()));
+
+            String line = in.readUTF();
+
+            System.out.println(line);
+            CloseConnection();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

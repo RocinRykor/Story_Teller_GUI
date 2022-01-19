@@ -3,13 +3,12 @@ package studio.rrprojects.storytellergui.gui;
 import studio.rrprojects.storytellergui.Controller;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class MainWindow extends JFrame {
     private final Controller controller;
     private JButton buttonTest;
     private JPanel panelMain;
+    private JButton buttonConnect;
 
     public MainWindow(Controller controller) {
         super("Story Teller v0");
@@ -22,7 +21,11 @@ public class MainWindow extends JFrame {
 
 
         buttonTest.addActionListener(actionEvent -> {
-            controller.testPing();
+            controller.sendAndClose("Hello World!");
+        });
+
+        buttonConnect.addActionListener(actionEvent -> {
+            controller.ping();
         });
     }
 }
