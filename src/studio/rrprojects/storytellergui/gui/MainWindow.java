@@ -9,7 +9,10 @@ public class MainWindow extends JFrame {
     private JButton buttonTest;
     private JPanel panelMain;
     private JButton buttonConnect;
-    private JTextField textFieldInput;
+    private JTextArea textFieldInput;
+    private JComboBox comboBox1;
+    private JComboBox comboBox2;
+    private JTextArea textArea1;
 
     public MainWindow(Controller controller) {
         super("Story Teller v0");
