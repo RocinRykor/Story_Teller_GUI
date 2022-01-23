@@ -6,13 +6,13 @@ import javax.swing.*;
 
 public class MainWindow extends JFrame {
     private final Controller controller;
-    private JButton buttonTest;
+    private JButton buttonSubmit;
     private JPanel panelMain;
     private JButton buttonConnect;
     private JTextArea textFieldInput;
-    private JComboBox comboBox1;
-    private JComboBox comboBox2;
-    private JTextArea textArea1;
+    private JComboBox comboBoxChannel;
+    private JComboBox comboBoxProfile;
+    private JTextArea textAreaMessage;
 
     public MainWindow(Controller controller) {
         super("Story Teller v0");
@@ -24,7 +24,7 @@ public class MainWindow extends JFrame {
         setVisible(true);
 
 
-        buttonTest.addActionListener(actionEvent -> {
+        buttonSubmit.addActionListener(actionEvent -> {
             String input = textFieldInput.getText();
             if (input.isBlank()) {
                 return;
