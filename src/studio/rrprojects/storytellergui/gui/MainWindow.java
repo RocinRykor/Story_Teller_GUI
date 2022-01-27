@@ -9,7 +9,6 @@ public class MainWindow extends JFrame {
     private JButton buttonSubmit;
     private JPanel panelMain;
     private JButton buttonConnect;
-    private JTextArea textFieldInput;
     private JComboBox comboBoxChannel;
     private JComboBox comboBoxProfile;
     private JTextArea textAreaMessage;
@@ -20,12 +19,15 @@ public class MainWindow extends JFrame {
 
         setContentPane(panelMain);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setResizable(false);
         pack();
         setVisible(true);
 
 
+        //TODO Disable all components until a successful connection has been established
+
         buttonSubmit.addActionListener(actionEvent -> {
-            String input = textFieldInput.getText();
+            String input = textAreaMessage.getText();
             if (input.isBlank()) {
                 return;
             }

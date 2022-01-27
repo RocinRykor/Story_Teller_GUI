@@ -16,6 +16,19 @@ public class Controller {
     }
 
     public void sendAndClose(String s) {
+        simpleSend(s);
+
+        //Close Connection
+        client.CloseConnection();
+    }
+
+    public void ping() {
+        simpleSend("ping");
+
+        client.await();
+    }
+
+    public void simpleSend(String s) {
         //Connect to Client
         //Start by loading the client and connecting to the server
         client = new Client("127.0.0.1", 5000);
@@ -23,19 +36,5 @@ public class Controller {
 
         //Send Message
         client.SendMessage(s);
-
-        //Close Connection
-        client.CloseConnection();
-    }
-
-    public void ping() {
-        //Start by loading the client and connecting to the server
-        client = new Client("127.0.0.1", 5000);
-        client.OpenConnection();
-
-        //Send Message
-        client.SendMessage("ping");
-
-        client.await();
     }
 }
